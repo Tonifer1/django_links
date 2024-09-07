@@ -16,8 +16,9 @@ def linklistview(request):
 
 def addlink(request):    
     a = request.POST['linkname']
-    b = request.POST['category']    
-    Link(linkname = a, category = Category.objects.get(id = b)).save()
+    b = request.POST['link_link']
+    c = request.POST['category']    
+    Link(linkname = a, link_link = b, category = Category.objects.get(id = c)).save()
     return redirect(request.META['HTTP_REFERER'])
 
 
@@ -37,7 +38,7 @@ def addcategory(request):
 
 def searchcategories(request):
     search = request.POST['search']
-    filtered = Category.objects.filter(companyname__icontains=search)
+    filtered = Category.objects.filter(categoryname__icontains=search)
     context = {'categories': filtered}
     return render (request,"categorylist.html",context)
 

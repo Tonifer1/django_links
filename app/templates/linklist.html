@@ -20,6 +20,7 @@
         <div class="card bg-dark text-white mb-3" style="width: 50rem;">
             <div class="card-body text-center">
                 <h4 class="card-title">{{ l.linkname }}</h4>
+                <a href="{{ l.link_link }}" class="card-title text-white">{{ l.link_link }}</a>
                 <a href="/edit-link-get/{{ l.id }}/" class="btn btn-success">Edit</a>
                 <a href="/confirm-delete-link/{{ l.id }}/" class="btn btn-danger">Delete</a>
               
@@ -36,14 +37,20 @@
 </div>
             <!-- Tämä lomake lähetetään palvelimelle, jossa se renderöidään ja lähetetään selaimelle. Huom! csrf token mukaan -->
 <script>
-    let formHtml = `
+    let formLink = `
     <h2 style="text-align: center;">Please fill in form</h2>
     <div class="card bg-dark text-white mt-3" style="width: 25rem;">
         <div class="card-body">
             <form method="post" action="/add-link/">
                 {% csrf_token %}
                 <input class="card-text" type="text" placeholder="Link name" name="linkname">
+                <input class="card-text" type="text" placeholder="Link" name="link_link">
                 <br />
+                <label for="category">Category:</label>
+                <select id="category" name="category">
+                    {% for c in categories %}
+                    <option value="{{ c.id }}">{{ c.categoryname }}</option>
+                    {% endfor %}
                 <input type="submit" value="Confirm" class="btn btn-success btn-sm mt-2">
                 <input type="button" id="hide-btn" class="btn btn-secondary btn-sm mt-2" onclick="hideaddform()" value="Cancel" name="">
             </form>
@@ -51,7 +58,7 @@
     </div>`;
 
     function showaddform() {
-        document.getElementById("add-div").innerHTML = formHtml;
+        document.getElementById("add-div").innerHTML = formLink;
     }
 
     function hideaddform() {

@@ -42,7 +42,7 @@
 </div>
             <!-- Tämä lomake lähetetään palvelimelle, jossa se renderöidään ja lähetetään selaimelle. Huom! csrf token mukaan -->
 <script>
-    let formHtml = `
+    let formCategory = `
     <h2 style="text-align: center;">Please fill in form</h2>
     <div class="card bg-dark text-white mt-3" style="width: 25rem;">
         <div class="card-body">
@@ -57,7 +57,7 @@
     </div>`;
 
     function showaddform() {
-        document.getElementById("add-div").innerHTML = formHtml;
+        document.getElementById("add-div").innerHTML = formCategory;
     }
 
     function hideaddform() {
