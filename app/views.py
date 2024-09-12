@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Category, Link
 
@@ -14,6 +14,8 @@ def linklistview(request):
     context = {'links': linklist, 'categories': categorylist}
     return render(request,'linklist.html', context)
 
+#Lisäys
+
 def addlink(request):    
     a = request.POST['linkname']
     b = request.POST['link_link']
@@ -21,6 +23,7 @@ def addlink(request):
     Link(linkname = a, link_link = b, category = Category.objects.get(id = c)).save()
     return redirect(request.META['HTTP_REFERER'])
 
+#Poisto
 # Tätä funktiota kutsutaan ensin, kun poistetaan linkki. Se hakee linkin id:n perusteella ja lähettää sen confirmdelLink.html sivulle
 # context nimet vapaasti nimettävissä
 # Tässä esimerkissä on käytetty yksikkö muotoa link, koska on kyseessä yksi poistettava linkki
@@ -32,6 +35,41 @@ def confirmdeletelink(request, id):
 def deletelink(request, id):
     Link.objects.get(id = id).delete()
     return redirect(reverse('links'))
+
+#Editointi
+def editlinkget(request, id):
+    link = get_object_or_404(Link, id=id)
+    categories = Category.objects.all()
+    context = {'link': link, 'categories': categories}
+    return render(request, 'editlink.html', context)
+
+
+def editlinkpost(request, id):
+    link = get_object_or_404(Link, id=id)
+    categories = Category.objects.all()
+    if request.method == 'POST':
+        link.linkname = request.POST['linkname']
+        link.category_id = request.POST['category']
+        link.link_link = request.POST['link_link']
+        link.save()
+        return redirect('links')
+    return render(request, 'editlink.html', {'link': link, 'categories': categories})
+
+'''
+def editlinkget(request, id):
+        link = Link.objects.get(id = id)
+        context = {'link': link}
+        return render (request,"editlink.html",context)
+'''
+
+'''
+def editlinkpost(request, id):
+        item = Link.objects.get(id = id)
+        item.linkname = request.POST['linkname']
+        item.category = request.POST['category']
+        item.link_link = request.POST['link_link']
+        item.save()
+        return redirect(reverse('links'))'''
 
   
 #Suppliers

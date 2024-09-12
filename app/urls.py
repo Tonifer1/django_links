@@ -1,7 +1,8 @@
 
 from django.urls import path
 from .views import landingview, linklistview, categorylistview, addcategory, addlink, \
-    searchcategories, deletelink, confirmdeletelink,confirmdeletecategory, deletecategory
+    searchcategories, deletelink, confirmdeletelink,confirmdeletecategory, deletecategory, \
+    editlinkget, editlinkpost
  
 
 urlpatterns = [
@@ -14,6 +15,9 @@ urlpatterns = [
     path('add-link/', addlink, name='add-link'),
     path('confirm-delete-link/<int:id>/', confirmdeletelink, name='confirm-delete-link'),
     path('delete-link/<int:id>/', deletelink, name='delete-link'),
+    path('edit-link-get/<int:id>/', editlinkget, name='edit-link-get'),
+    path('edit-link-post/<int:id>/', editlinkpost, name='edit-link-post'),
+    #path('links-by-supplier/<int:id>/', linksfiltered, name='links-by-supplier'),
     
 
 
