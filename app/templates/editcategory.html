@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="card bg-dark text-white" style="width: 30rem; margin-top: -200px !important;">
+            <div class="card-header">
+                <h5 class="text-center">Editing {{ category.categoryname }}</h5>
+            </div>
+            <div class="card-body text-center">
+                <form method="post" action="{% url 'edit-category-post' category.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>Category Name</label>
+                        <input type="text" name="categoryname" value="{{ category.categoryname }}" class="form-control">
+                    </div>
+                    <input type="submit" value="Update" class="btn btn-success btn-sm">
+                    <input type="button" onclick="window.location.href='/categories'" id="hide-btn" class="btn btn-secondary btn-sm" value="Cancel">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

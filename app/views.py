@@ -94,6 +94,17 @@ def deletecategory(request, id):
     Category.objects.get(id = id).delete()
     return redirect(reverse('categories'))
 
+def editcategoryget(request, id):
+        category = Category.objects.get(id = id)
+        context = {'category': category}
+        return render (request,"editcategory.html",context)
+
+def editcategorypost(request, id):
+        item = Category.objects.get(id = id)
+        item.categoryname = request.POST['categoryname']
+        item.save()
+        return redirect(reverse('categories'))
+
 def searchcategories(request):
     search = request.POST['search']
     filtered = Category.objects.filter(categoryname__icontains=search)
