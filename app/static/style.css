@@ -1,0 +1,16 @@
+.background-image {
+    background-image: url('./images/koe3.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+
+  .playfair-display-unique1 {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+  }
+
