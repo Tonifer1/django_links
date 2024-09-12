@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1 class="text-center playfair-display-unique1">Category delete</h1>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="card bg-dark text-white" style="width: 50rem" ;>
+            <div class="card-body text-center">
+                <h3 class="card-title">Haluatko varmasti poistaa</h3>
+                <h5 class="card-text">Category: {{category.categoryname}}</h5>
+
+                <!--<a href="/categories/" class="btn btn-primary">Back</a>-->
+                <a class="btn btn-success" href="{% url 'categories' %}">Back</a>
+
+                <!--Tästä kutsutaan urlia delete category ja annetaan sille id -->
+
+                <a href="{% url 'delete-category' category.id %}" class="btn btn-danger">Delete</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h1 class="text-center playfair-display-unique1">Link delete</h1>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="card bg-dark text-white" style="width: 50rem" ;>
+            <div class="card-body text-center">
+                <h3 class="card-title">Haluatko varmasti poistaa</h3>
+                <h5 class="card-text">Link: {{link.linkname}}</h5>
+
+                <!--<a href="/links/" class="btn btn-primary">Back</a>-->
+                <a class="btn btn-success" href="{% url 'links' %}">Back</a>
+
+                <!--Tästä kutsutaan urlia: delete link ja annetaan sille poistettava id. Tämä hoitaa itse poiston vasta -->
+
+                <a href="{% url 'delete-link' link.id %}" class="btn btn-danger">Delete</a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

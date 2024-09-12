@@ -21,8 +21,19 @@ def addlink(request):
     Link(linkname = a, link_link = b, category = Category.objects.get(id = c)).save()
     return redirect(request.META['HTTP_REFERER'])
 
+# Tätä funktiota kutsutaan ensin, kun poistetaan linkki. Se hakee linkin id:n perusteella ja lähettää sen confirmdelLink.html sivulle
+# context nimet vapaasti nimettävissä
+# Tässä esimerkissä on käytetty yksikkö muotoa link, koska on kyseessä yksi poistettava linkki
+def confirmdeletelink(request, id):
+    link = Link.objects.get(id = id)
+    context = {'link': link}
+    return render (request,"confirmdelLink.html",context)
 
+def deletelink(request, id):
+    Link.objects.get(id = id).delete()
+    return redirect(reverse('links'))
 
+  
 #Suppliers
 #Categories
 
@@ -35,6 +46,15 @@ def addcategory(request):
     a = request.POST['categoryname']
     Category(categoryname = a).save()
     return redirect(request.META['HTTP_REFERER'])
+
+def confirmdeletecategory(request, id):
+    category = Category.objects.get(id = id)
+    context = {'category': category}
+    return render (request,"confirmdelCategory.html",context)
+
+def deletecategory(request, id):
+    Category.objects.get(id = id).delete()
+    return redirect(reverse('categories'))
 
 def searchcategories(request):
     search = request.POST['search']
