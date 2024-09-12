@@ -1,12 +1,12 @@
 
 from django.urls import path
-from .views import landingview, linklistview, categorylistview, addcategory, addlink, \
+from .views import indexview, linklistview, categorylistview, addcategory, addlink, \
     searchcategories, deletelink, confirmdeletelink,confirmdeletecategory, deletecategory, \
     editlinkget, editlinkpost
  
 
 urlpatterns = [
-    path('', landingview),
+    path('', indexview),
 
     #Procucts
     #Links

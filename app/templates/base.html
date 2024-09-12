@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Products and Vendors</title>
+    <title>{% block title %}Django Links App{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -54,11 +54,7 @@
             </ul>
         </div>
     </nav>
-    <center>
-          <h1 id="welcome-text">Welcome to Django Links app</h1>
-    </center>
 
-    <!-- Keskittää kaiken sisällön, joka tulee laajennetuista sivuista -->
     <div class="container">
         <div class="d-flex justify-content-center">
             <div class="w-100">
@@ -68,14 +64,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Tarkista nykyinen URL
-        if (window.location.pathname !== '/') {
-            // Piilota elementti, jos ei olla index-sivulla
-            document.getElementById("welcome-text").style.display = "none";
-        }
-    </script>
 </body>
 
 </html>
