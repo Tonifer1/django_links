@@ -12,6 +12,7 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    
 
     <!-- jQuery and Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -25,6 +26,7 @@
     <!-- Django static files -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
+
 </head>
 
 <body class="playfair-display-unique1 background-image">
@@ -72,7 +74,7 @@
     <script>
         // Tarkista nykyinen URL
         if (window.location.pathname !== '/') {
-            // Piilota elementti, jos ei olla index-sivulla
+            // Piilotta elementin, jos ei olla index-sivulla
             document.getElementById("welcome-text").style.display = "none";
         }
     </script>

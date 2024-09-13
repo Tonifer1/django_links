@@ -93,11 +93,19 @@ def confirmdeletecategory(request, id):
 def deletecategory(request, id):
     Category.objects.get(id = id).delete()
     return redirect(reverse('categories'))
-
+'''
 def editcategoryget(request, id):
         category = Category.objects.get(id = id)
         context = {'category': category}
         return render (request,"editcategory.html",context)
+'''
+
+def editcategoryget(request, id):
+    category = Category.objects.get(id=id)
+    categorylist = Category.objects.all()  # Hae kaikki kategoriat dropdown-valikkoa varten
+    context = {'category': category, 'categories': categorylist}
+    return render(request, "editcategory.html", context)
+
 
 def editcategorypost(request, id):
         item = Category.objects.get(id = id)
@@ -110,5 +118,25 @@ def searchcategories(request):
     filtered = Category.objects.filter(categoryname__icontains=search)
     context = {'categories': filtered}
     return render (request,"categorylist.html",context)
+
+def linksbycategory(request, id):
+    category = get_object_or_404(Category, id=id)
+    links = Link.objects.filter(category=category)  # Suodatetaan linkit kategorian mukaan
+    context = {'category': category, 'links': links}
+    return render(request, "linksbycategory.html", context)
+
+'''
+def linksbycategory(request):
+    categorylist = Category.objects.get(id = id)
+    context = {'categories': categorylist}
+    return render (request,"categorylist.html",context)
+'''
+
+'''
+def categorylistview(request):
+    categorylist = Category.objects.all()
+    context = {'categories': categorylist}
+    return render(request,'categorylist.html', context)
+'''
 
 

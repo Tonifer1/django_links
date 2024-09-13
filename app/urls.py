@@ -2,7 +2,7 @@
 from django.urls import path
 from .views import indexview, linklistview, categorylistview, addcategory, addlink, \
     searchcategories, deletelink, confirmdeletelink,confirmdeletecategory, deletecategory, \
-    editlinkget, editlinkpost, editcategoryget, editcategorypost
+    editlinkget, editlinkpost, editcategoryget, editcategorypost, linksbycategory
  
 
 urlpatterns = [
@@ -31,7 +31,7 @@ urlpatterns = [
     path('edit-category-get/<int:id>/', editcategoryget, name='edit-category-get'),
     path('edit-category-post/<int:id>/', editcategorypost, name='edit-category-post'),
     path('search-categories/', searchcategories, name='search-categories'),
-    #path('links-by-category/<int:id>/', linksfiltered, name='links-by-category'),
+    path('links-by-category/<int:id>/', linksbycategory, name='links-by-category'),
     
     
     

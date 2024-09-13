@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container text-center">
+    <h1>Links for {{ category.categoryname }}</h1>
+    
+    <div class="d-flex flex-column align-items-center mt-4">
+        {% for link in links %}
+        <div class="card bg-dark text-white mb-3" style="width: 50rem;">
+            <div class="card-body text-center">
+                <h4 class="card-title">{{ link.linkname }}</h4>
+                <a href="{% url 'categories' %}" class="btn btn-success">Back to Categories</a>
+                <a href="{{ link.link_link }}" class="btn btn-secondary" target="_blank" title="Visit {{ link.linkname }}">Visit Link</a>
+                
+                
+            </div>
+        </div>
+        {% empty %}
+        <p>No links found for this category</p>
+        {% endfor %}
+    </div>
+        <!-- Linkki takaisin categorylist.html-sivulle -->
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{% url 'categories' %}" class="btn btn-secondary">Back to Categories</a>
+        </div>
+</div>
+{% endblock %}

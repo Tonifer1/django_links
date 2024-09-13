@@ -22,8 +22,8 @@
                 <h4 class="card-title">{{ l.linkname }}</h4>
                 <h4 class="card-title">Category: {{ l.category }}</h4>
                 <a href="/edit-link-get/{{ l.id }}/" class="btn btn-success">Edit</a>
-                <a href="/confirm-delete-link/{{ l.id }}/" class="btn btn-danger">Delete</a>
-                <a href="{{ l.link_link }}" class="card-title text-white">{{ l.link_link }}</a>
+                <a href="/confirm-delete-link/{{ l.id }}/" class="btn btn-danger">Delete</a>                
+                <a href="{{ l.link_link }}" class="btn btn-secondary" target="_blank" title="Visit {{ l.linkname }}">Visit Link</a>
                 
             </div>
         </div>
