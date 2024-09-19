@@ -20,7 +20,7 @@ def login_action(request):
         login(request, user)
         # Tervehdystä varten context
         context = {'name': user.first_name}
-        # Kutsutaan suoraan landingview.html
+        # Kutsutaan suoraan index.html
         return render(request,'index.html',context)
     # Jos ei kyseistä käyttäjää löydy
     else:
@@ -29,16 +29,19 @@ def login_action(request):
     
 def logout_action(request):
     logout(request)
-    return render(request, 'index.html')
+    return redirect('/')
 
 #Products
 #Links
 
 def linklistview(request):
-    linklist = Link.objects.all()
-    categorylist = Category.objects.all()
-    context = {'links': linklist, 'categories': categorylist}
-    return render(request,'linklist.html', context)
+    if not request.user.is_authenticated:
+        return render(request, 'loginpage.html')
+    else:
+        linklist = Link.objects.all()
+        categorylist = Category.objects.all()
+        context = {'links': linklist, 'categories': categorylist}
+        return render(request,'linklist.html', context)
 
 #Lisäys
 
@@ -102,9 +105,12 @@ def editlinkpost(request, id):
 #Categories
 
 def categorylistview(request):
-    categorylist = Category.objects.all()
-    context = {'categories': categorylist}
-    return render(request,'categorylist.html', context)
+    if not request.user.is_authenticated:
+        return render(request, 'loginpage.html')
+    else:
+        categorylist = Category.objects.all()
+        context = {'categories': categorylist}
+        return render(request,'categorylist.html', context)
 
 def addcategory(request):
     a = request.POST['categoryname']
