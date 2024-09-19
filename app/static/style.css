@@ -14,3 +14,35 @@
     font-style: normal;
   }
 
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #343a40; /* Voit muuttaa värin haluamaksesi */
+    padding: 10px 0;
+    font-size: 20px; /* Suurempi fonttikoko */
+    text-align: center;
+    color: white;
+}
+
+.moving-text {
+    font-size: 24px; /* Lisää fontin kokoa */
+    font-weight: bold;
+    white-space: nowrap; /* Estää tekstin katkeamisen */
+    animation: move 20s linear infinite;
+}
+
+/* Lisää hieman tilaa footerin ja sivun sisällön väliin */
+.container {
+    margin-bottom: 60px;
+}
+
+@keyframes move {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+
+
+

@@ -57,7 +57,7 @@
         </div>
     </nav>
     <center>
-          <h1 id="welcome-text">Welcome to Django Links app</h1>
+          <h1 id="welcome-text">Welcome to Links and Notes app.</h1>
     </center>
 
     <!-- Keskittää kaiken sisällön, joka tulee laajennetuista sivuista -->
@@ -71,11 +71,19 @@
         </div>
     </div>
 
+    <!-- Footer with moving text (only visible on index.html) -->
+    <div id="footer" class="footer">
+        <div class="moving-text">
+            Easily manage your links and create notes in one place.
+        </div>
+    </div>
+
     <script>
         // Tarkista nykyinen URL
         if (window.location.pathname !== '/') {
             // Piilotta elementin, jos ei olla index-sivulla
             document.getElementById("welcome-text").style.display = "none";
+            document.getElementById("footer").style.display = "none";
         }
     </script>
 </body>
