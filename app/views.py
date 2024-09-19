@@ -1,9 +1,35 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from .models import Category, Link
+from django.contrib.auth import authenticate, login, logout
 
 def indexview(request):
     return render(request,'index.html')
+
+def loginview(request):
+    return render(request, 'loginpage.html')
+
+def login_action(request):
+    user = request.POST['username']
+    passw = request.POST['password']
+    # Löytyykö kyseistä käyttäjää?
+    user = authenticate(username = user, password = passw)
+    #Jos löytyy:
+    if user:
+        # Kirjataan sisään
+        login(request, user)
+        # Tervehdystä varten context
+        context = {'name': user.first_name}
+        # Kutsutaan suoraan landingview.html
+        return render(request,'index.html',context)
+    # Jos ei kyseistä käyttäjää löydy
+    else:
+        return render(request, 'loginerror.html')
+
+    
+def logout_action(request):
+    logout(request)
+    return render(request, 'index.html')
 
 #Products
 #Links
