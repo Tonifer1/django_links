@@ -2,11 +2,26 @@
 from django.urls import path
 from .views import indexview, linklistview, categorylistview, addcategory, addlink, \
     searchcategories, deletelink, confirmdeletelink,confirmdeletecategory, deletecategory, \
-    editlinkget, editlinkpost, editcategoryget, editcategorypost, linksbycategory
+    editlinkget, editlinkpost, editcategoryget, editcategorypost, linksbycategory, login_action, logout_action, \
+    loginview
+
+
+
+
+
  
 
 urlpatterns = [
-    path('', indexview),
+
+    # Authentication url's
+
+    path('', indexview, name='index'),
+    path('log/', loginview, name='log'),
+    path('login/', login_action , name= 'login'),
+    path('logout/', logout_action, name= 'logout'),
+
+
+    
 
     #Procucts
     #Links
