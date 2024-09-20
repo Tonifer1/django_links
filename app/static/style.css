@@ -26,14 +26,14 @@
     color: white;
 }
 
-/*
+
 .moving-text {
-    font-size: 24px; /
+    font-size: 24px; 
     font-weight: bold;
     white-space: nowrap; 
     animation: move 20s linear infinite;
 }
-    */
+    
 
 /* Lisää hieman tilaa footerin ja sivun sisällön väliin */
 .container {
@@ -43,6 +43,21 @@
 @keyframes move {
     0% { transform: translateX(100%); }
     100% { transform: translateX(-100%); }
+}
+
+/*NavBar*/
+.navbar-nav {
+  font-size: 1.2em; 
+  
+  
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff !important;
+}
+
+.navbar-nav .nav-item.active .nav-link {
+  color: #ffffff !important;
 }
 
 

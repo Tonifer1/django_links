@@ -40,7 +40,7 @@ def linklistview(request):
     if not request.user.is_authenticated:
         return render(request, 'loginpage.html')
     else:
-        linklist = Link.objects.all()
+        linklist = Link.objects.all().order_by('linkname')
         categorylist = Category.objects.all()
         context = {'links': linklist, 'categories': categorylist}
         return render(request,'linklist.html', context)
@@ -110,7 +110,7 @@ def categorylistview(request):
     if not request.user.is_authenticated:
         return render(request, 'loginpage.html')
     else:
-        categorylist = Category.objects.all()
+        categorylist = Category.objects.all().order_by('categoryname')
         context = {'categories': categorylist}
         return render(request,'categorylist.html', context)
 
