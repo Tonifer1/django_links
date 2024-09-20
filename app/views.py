@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
-from .models import Category, Link
+from .models import Category, Link, Note
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from .forms import NoteForm
 
 def indexview(request):
     return render(request,'index.html')
@@ -170,5 +172,22 @@ def categorylistview(request):
     context = {'categories': categorylist}
     return render(request,'categorylist.html', context)
 '''
+#Notes
+@login_required
+def note_list(request):
+    notes = Note.objects.filter(user=request.user)
+    return render(request, 'notes/note_list.html', {'notes': notes})
 
+@login_required
+def add_note(request):
+    if request.method == 'POST':
+        form = NoteForm(request.POST)
+        if form.is_valid():
+            note = form.save(commit=False)
+            note.user = request.user
+            note.save()
+            return redirect('note-list')
+    else:
+        form = NoteForm()
+    return render(request, 'notes/add_note.html', {'form': form})
 

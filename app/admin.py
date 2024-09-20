@@ -1,6 +1,6 @@
 
 from django.contrib import admin
-from app.models import Category, Link
+from app.models import Category, Link, Note
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -11,3 +11,6 @@ class LinkAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(Note)
+class NoteAdmin(admin.ModelAdmin):
+    pass
