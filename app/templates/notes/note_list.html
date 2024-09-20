@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block content %}
+  <h1>Your Notes</h1>
+  <ul>
+    {% for note in notes %}
+      <li>{{ note.title }} - {{ note.created_at }}</li>
+    {% empty %}
+      <li>No notes found</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'add-note' %}">Add a new note</a>
+{% endblock %}

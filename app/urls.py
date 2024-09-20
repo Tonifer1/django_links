@@ -3,7 +3,7 @@ from django.urls import path
 from .views import indexview, linklistview, categorylistview, addcategory, addlink, \
     searchcategories, deletelink, confirmdeletelink,confirmdeletecategory, deletecategory, \
     editlinkget, editlinkpost, editcategoryget, editcategorypost, linksbycategory, login_action, logout_action, \
-    loginview
+    loginview, note_list, add_note 
 
 
 
@@ -47,7 +47,10 @@ urlpatterns = [
     path('edit-category-post/<int:id>/', editcategorypost, name='edit-category-post'),
     path('search-categories/', searchcategories, name='search-categories'),
     path('links-by-category/<int:id>/', linksbycategory, name='links-by-category'),
-    
+
+    #Notes
+    path('notes/', note_list, name='note-list'),
+    path('notes/add/', add_note, name='add-note'),
     
     
     
