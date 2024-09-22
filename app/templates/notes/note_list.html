@@ -13,6 +13,7 @@
                 <th>Title</th>
                 <th>Content</th>
                 <th>Date</th>
+                <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +22,7 @@
                 <td>{{note.title}}</td>
                 <td>{{note.content}}</td>
                 <td>{{ note.created_at|date:"d M Y H:i" }}</td>
+                <td><a href="confirm-delete-note/{{ note.id }}/" class="btn btn-danger">Delete</a></td>
                 
                 </tr>
                 {%empty%}
