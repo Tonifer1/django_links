@@ -11,15 +11,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-#SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8%@^mz=9ymd7owe!bx7^dqw(%k+pb9d@c)#0useyi-tdh1w@vb'
 
-#DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
+
+DEBUG = os.getenv('DJANGO_DEBUG', 'False') == 'True'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -67,7 +67,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'links.wsgi.application'
 
-
+'''
 # Default Database sqlite3
 DATABASES = {
     'default': {
@@ -75,19 +75,21 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 '''
+
+
+
 # Render käytössä
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://postgres:postgres@localhost:5432/suppliersdb',
+        default='postgresql://postgres:postgres@localhost:5432/linksdb',
         conn_max_age=600
     )
 }
-'''
 
-# Local käytössä
+
+# PostgreSQL Local käytössä
 '''
 DATABASES = {
     'default': {
@@ -100,8 +102,20 @@ DATABASES = {
     }
 }
 '''
+'''
+#Ajo PostgreSQL Tietokantaan
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'linksdb',
+        'USER': 'postgres',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
+}
 
-
+'''
 
 
 # Password validation

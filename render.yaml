@@ -1,0 +1,28 @@
+databases:
+  - name: linksdb
+    plan: free
+    databaseName: links
+    user: omistaja
+
+services:
+  - type: web
+    plan: free
+    name: suppliers
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn suppliers.asgi:application -k uvicorn.workers.UvicornWorker"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: linksdb
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: "omistaja"
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: "12345678"
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: "super@usersuper.fi"

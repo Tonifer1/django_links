@@ -53,7 +53,7 @@ def logout_action(request):
     logout(request)
     return redirect('/')
 
-#Products
+
 #Links
 
 def linklistview(request):
@@ -123,7 +123,7 @@ def editlinkpost(request, id):
         return redirect(reverse('links'))'''
 
   
-#Suppliers
+
 #Categories
 
 def categorylistview(request):
