@@ -20,9 +20,3 @@ services:
         generateValue: true
       - key: WEB_CONCURRENCY
         value: 4
-      - key: DJANGO_SUPERUSER_USERNAME
-        value: "omistaja"
-      - key: DJANGO_SUPERUSER_PASSWORD
-        value: "12345678"
-      - key: DJANGO_SUPERUSER_EMAIL
-        value: "super@usersuper.fi"
