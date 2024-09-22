@@ -102,20 +102,8 @@ DATABASES = {
     }
 }
 '''
-'''
-#Ajo PostgreSQL Tietokantaan
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'linksdb',
-        'USER': 'postgres',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
-}
 
-'''
+
 
 
 # Password validation
