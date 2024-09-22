@@ -1,17 +1,17 @@
 {% extends 'index.html' %}
 {% block content %}
 <center>
-  <h1>Your Notes</h1>
+  <h1>Your Notes</h1>  
+  <a href="{% url 'add-note' %}" class=" btn btn-success">Add a new note</a>
 </center>
-  <a href="{% url 'add-note' %}">Add a new note</a>
-
+  <br>
     <div class=" container mt-3">
          
         <table class="table table-bordered table-dark table-hover">
             <thead>
                 <tr>
-                <th>Otsikko</th>
-                <th>Sisältö</th>
+                <th>Title</th>
+                <th>Content</th>
                 <th>Date</th>
                 </tr>
             </thead>

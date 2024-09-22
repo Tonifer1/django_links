@@ -1,9 +1,15 @@
 {% extends 'index.html' %}
+
 {% block content %}
-  <h1>Add a New Note</h1>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Note</button>
-  </form>
+<div class="container d-flex justify-content-center align-items-center" id="add-note" style="min-height: 100vh;">
+    <div class="card bg-light p-4" style="width: 30rem;">
+        <h1 class="text-center">Add a New Note</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success btn-block">Add Note</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
+

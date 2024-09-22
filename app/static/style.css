@@ -19,9 +19,9 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #343a40; /* Voit muuttaa värin haluamaksesi */
+    background-color: #343a40; 
     padding: 10px 0;
-    font-size: 20px; /* Suurempi fonttikoko */
+    font-size: 20px; /* Fonttikokoa suurennettu */
     text-align: center;
     color: white;
 }
@@ -40,6 +40,14 @@
     margin-bottom: 60px;
 }
 
+#add-note {
+  margin-top: -150px;
+}
+
+#welcome-text {
+  margin-top: 200px;
+}
+
 @keyframes move {
     0% { transform: translateX(100%); }
     100% { transform: translateX(-100%); }
@@ -47,9 +55,7 @@
 
 /*NavBar*/
 .navbar-nav {
-  font-size: 1.2em; 
-  
-  
+  font-size: 1.2em;   
 }
 
 .navbar-dark .navbar-nav .nav-link {

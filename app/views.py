@@ -10,7 +10,7 @@ def indexview(request):
 
 def loginview(request):
     return render(request, 'loginpage.html')
-
+'''
 def login_action(request):
     user = request.POST['username']
     passw = request.POST['password']
@@ -27,7 +27,27 @@ def login_action(request):
     # Jos ei kyseistä käyttäjää löydy
     else:
         return render(request, 'loginerror.html')
+'''
 
+''' Tässä versiossa authenticate() saa myös request-objektin.
+Se antaa Djangolle mahdollisuuden käsitellä monimutkaisempia autentikaatiomenetelmiä, 
+ kuten kaksivaiheista tunnistautumista (2FA) tai tilannetta, jossa lisätietoja pyynnöstä tarvitaan autentikoinnin aikana.
+'''
+def login_action(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')  # Hakee username lomakkeesta
+        password = request.POST.get('password')  # Hakee password lomakkeesta
+        
+        user = authenticate(request, username=username, password=password)
+        
+        if user is not None:
+            login(request, user)
+            context = {'name': user.first_name}
+            return render(request, 'index.html', context)
+        else:
+            return render(request, 'loginerror.html', {'error': 'Invalid credentials'})
+    
+    return render(request, 'loginpage.html')  # Näytetään kirjautumissivu GET-pyynnölle
     
 def logout_action(request):
     logout(request)
@@ -136,7 +156,7 @@ def editcategoryget(request, id):
 
 def editcategoryget(request, id):
     category = Category.objects.get(id=id)
-    categorylist = Category.objects.all()  # Hae kaikki kategoriat dropdown-valikkoa varten
+    categorylist = Category.objects.all()  # Hakee kaikki kategoriat dropdown-valikkoa varten
     context = {'category': category, 'categories': categorylist}
     return render(request, "editcategory.html", context)
 
@@ -159,24 +179,23 @@ def linksbycategory(request, id):
     context = {'category': category, 'links': links}
     return render(request, "linksbycategory.html", context)
 
+
+#Notes
 '''
-def linksbycategory(request):
-    categorylist = Category.objects.get(id = id)
-    context = {'categories': categorylist}
-    return render (request,"categorylist.html",context)
+def note_list(request):
+    if not request.user.is_authenticated:
+        return render(request, 'loginpage.html')
+    else:
+        notes = Note.objects.filter(user=request.user)
+        return render(request, 'notes/note_list.html', {'notes': notes})
 '''
 
-'''
-def categorylistview(request):
-    categorylist = Category.objects.all()
-    context = {'categories': categorylist}
-    return render(request,'categorylist.html', context)
-'''
-#Notes
+
 @login_required
 def note_list(request):
     notes = Note.objects.filter(user=request.user)
     return render(request, 'notes/note_list.html', {'notes': notes})
+
 
 @login_required
 def add_note(request):
@@ -190,4 +209,6 @@ def add_note(request):
     else:
         form = NoteForm()
     return render(request, 'notes/add_note.html', {'form': form})
+
+
 
