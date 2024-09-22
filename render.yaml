@@ -7,7 +7,7 @@ databases:
 services:
   - type: web
     plan: free
-    name: suppliers
+    name: links
     runtime: python
     buildCommand: "./build.sh"
     startCommand: "python -m gunicorn links.asgi:application -k uvicorn.workers.UvicornWorker"
