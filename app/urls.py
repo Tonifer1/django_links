@@ -3,7 +3,7 @@ from django.urls import path
 from .views import indexview, linklistview, categorylistview, addcategory, addlink, \
     searchcategories, deletelink, confirmdeletelink,confirmdeletecategory, deletecategory, \
     editlinkget, editlinkpost, editcategoryget, editcategorypost, linksbycategory, login_action, logout_action, \
-    loginview, note_list, add_note 
+    loginview, note_list, add_note, delete_note, confirmdeletenote
 
 
 
@@ -51,6 +51,8 @@ urlpatterns = [
     #Notes
     path('notes/', note_list, name='note-list'),
     path('notes/add/', add_note, name='add-note'),
+    path('notes/delete-note/<int:id>/', delete_note, name='delete-note'),
+    path('notes/confirm-delete-note/<int:id>/', confirmdeletenote, name='confirm-delete-note'),
     
     
     

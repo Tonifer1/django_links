@@ -210,5 +210,16 @@ def add_note(request):
         form = NoteForm()
     return render(request, 'notes/add_note.html', {'form': form})
 
+def delete_note(request, id):
+    Note.objects.get(id = id).delete()
+    return redirect(reverse('note-list'))
+
+def confirmdeletenote(request, id):
+    note = Note.objects.get(id = id)
+    context = {'note': note}
+    return render (request,"notes/confirmdelnote.html",context)
+
+
+
 
 
