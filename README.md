@@ -4,6 +4,7 @@ Notes Section: Users can create, view, and delete personal notes. Each note incl
 User Authentication: The app requires users to log in before accessing features, ensuring privacy and security.
 Responsive Design: Built with Bootstrap, the app ensures a clean and responsive user interface across various devices.
 Dynamic Footer: A moving text footer adds a dynamic and engaging element to the site.
+The application is deployed on Render.com
 
 [Visit Links and Notes Home Page](https://links-rql9.onrender.com/)
 
